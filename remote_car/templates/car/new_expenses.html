@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block title %}All expenses{% endblock %}
+{% block body %}
+
+  {% load crispy_forms_tags %}
+    <form action="." method="POST" class="transparent ">
+        {% csrf_token %}
+        <div class="form-inner">
+            <h3>Update Expenses</h3>
+                {{ form_update.summa |as_crispy_field }}
+                {{ form_update.name |as_crispy_field}}
+                {{ form_update.notes |as_crispy_field}}
+                {{ form_update.date_money |as_crispy_field}}
+
+            <input type="submit" value="Update">
+        </div>
+    </form>
+
+{% endblock %}

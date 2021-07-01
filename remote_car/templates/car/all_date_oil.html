@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block title %}All Date Oil{% endblock %}
+{% block body %}
+
+    <h2 class="my_title">All Date Oil</h2>
+
+<table class="table table-info">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col"></th>
+      <th scope="col">Date Oil</th>
+      <th scope="col">Millage Oil</th>
+      <th scope="col"></th>
+      <th scope="col"></th>
+    </tr>
+  </thead>
+    {% for oil_ in oil %}
+      <tbody>
+        <tr>
+          <th scope="row"></th>
+          <td >{{ oil_.date_oil }}</td>
+          <td>{{ oil_.km_oil}}</td>
+          <td><a class="btn btn-outline-primary" href="{% url 'car:update_date_oil' oil_.id %}">Update</a></td>
+          <td><a class="btn btn-outline-primary" href="{% url 'car:delete_date_oil' oil_.id %}">Delete</a></td>
+        </tr>
+      </tbody>
+    {% endfor %}
+</table>
+{% endblock %}

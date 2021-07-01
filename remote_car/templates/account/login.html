@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% block title %}Login{% endblock %}
+
+{% block body %}
+	<div class="container h-100">
+		<div class="d-flex justify-content-center h-100">
+			<div class="user_card">
+
+				<div class="d-flex justify-content-center form_container">
+					<form method="POST" action="" class="transparent">
+						{% csrf_token %}
+						<div class="form-inner">
+							<h3 id="form-title">LOGIN</h3>
+						<div class="input-group mb-3">
+
+							<input type="text" name="username" placeholder="Username..." class="form-control textarea">
+						</div>
+						<div class="input-group mb-2">
+
+								<input type="password" name="password" placeholder="Password..." class="form-control textarea" >
+						</div>
+
+							<div class="d-flex justify-content-center mt-3 login_container">
+				 				<input class="btn login_btn btn-primary" type="submit" value="Login">
+
+				   			</div>
+							</div>
+					</form>
+
+				</div>
+
+				{% for message in messages %}
+
+					<p id="messages">{{ message }}</p>
+				{% endfor %}
+
+				<div class="mt-4">
+					<div class="d-flex justify-content-center links">
+						<p class="col_p">Don't have an account? </p>
+						<a href="{% url 'register' %}" class="ml-2 btn btn-info">Sign Up</a>
+					</div>
+
+				</div>
+			</div>
+		</div>
+	</div>
+
+{% endblock %}

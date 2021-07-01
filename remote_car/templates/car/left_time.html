@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+
+
+{% block title %}Left Time{% endblock %}
+
+{% block body %}
+
+<h1 class="countdown-title">left until the end of the insurance</h1>
+
+<div id="countdown" class="countdown">
+  <div class="countdown-number">
+    <span class="days countdown-time"></span>
+    <span class="countdown-text">Days</span>
+  </div>
+  <div class="countdown-number">
+    <span class="hours countdown-time"></span>
+    <span class="countdown-text">Hours</span>
+  </div>
+  <div class="countdown-number">
+    <span class="minutes countdown-time"></span>
+    <span class="countdown-text">Minutes</span>
+  </div>
+  <div class="countdown-number">
+    <span class="seconds countdown-time"></span>
+    <span class="countdown-text">Seconds</span>
+  </div>
+</div>
+<p>
+<h1 class="countdown-title">left until the end of the inspection</h1>
+<div id="countdown-2" class="countdown">
+  <div class="countdown-number">
+    <span class="days countdown-time"></span>
+    <span class="countdown-text">Days</span>
+  </div>
+  <div class="countdown-number">
+    <span class="hours countdown-time"></span>
+    <span class="countdown-text">Hours</span>
+  </div>
+  <div class="countdown-number">
+    <span class="minutes countdown-time"></span>
+    <span class="countdown-text">Minutes</span>
+  </div>
+  <div class="countdown-number">
+    <span class="seconds countdown-time"></span>
+    <span class="countdown-text">Seconds</span>
+  </div>
+</div>
+</p>
+<script> var INSURANCE = '{{ time_insurance }}'; </script>
+<script> var INSPECTION = '{{ time_inspection }}'; </script>
+
+{% endblock %}

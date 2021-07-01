@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ expenses.name }}{% endblock %}
+{% block body %}
+
+    <h2 class="col_p"> {{ expenses.name }}</h2>
+
+    <p class="col_p">Summa: {{ expenses.summa }} BYN</p>
+    <p class="col_p">Notes: {{ expenses.notes }}</p>
+    <p class="col_p">Date: {{ expenses.date_money }}</p>
+
+{% endblock %}

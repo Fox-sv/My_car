@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block title %}Enter date car{% endblock %}
+{% block body %}
+
+
+
+{% load crispy_forms_tags %}
+<form action="." method="POST" class="transparent">
+        {% csrf_token %}
+        <div class="form-inner">
+            <h3>Date Oil/ Mileage Oil</h3>
+            {{ form_oil.date_oil | as_crispy_field }}
+            {{ form_oil.km_oil | as_crispy_field }}
+            <input type="submit" value="Create" onclick="myFunction()">
+        </div>
+</form>
+
+{% endblock %}
+

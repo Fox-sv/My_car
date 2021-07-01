@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block title %}All expenses{% endblock %}
+{% block body %}
+
+
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+
+        <h5 class="modal-title" id="exampleModalLabel">New Expenses</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+
+    {% load crispy_forms_tags %}
+    <form action="." method="POST" class="transparent modal_form">
+        {% csrf_token %}
+        <div class="form-inner">
+            <h3>New Expenses</h3>
+                {{ form.summa|as_crispy_field }}
+                {{ form.name|as_crispy_field }}
+                {{ form.notes|as_crispy_field }}
+                {{ form.date_money|as_crispy_field }}
+            <input type="submit" value="Create">
+        </div>
+    </form>
+
+    </div>
+  </div>
+</div>
+
+{% endblock %}

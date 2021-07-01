@@ -1,0 +1,110 @@
+{% extends 'base.html' %}
+
+{% block title %}All expenses{% endblock %}
+{% block body %}
+
+<h2 class="my_title">All Expenses</h2>
+<table class="table table-info">
+  <thead class="thead-dark">
+    <tr>
+        <th scope="col">#</th>
+        <th scope="col">Category</th>
+        <th scope="col">Summa</th>
+        <th scope="col">Currency</th>
+        <th scope="col">Date_expenses</th>
+        <th scope="col"></th>
+        <th scope="col"></th>
+        <th scope="col"></th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for exp in expenses %}
+    <tr>
+        <th scope="row"></th>
+        <td>{{ exp.name }}</td>
+        <td>{{ exp.summa }}</td>
+        <td>BYN</td>
+        <td>{{ exp.date_money }}</td>
+        <td><a class="btn btn-outline-primary" href="{% url 'car:expenses_details' exp.id %}">Details</a></td>
+        <td><a class="btn btn-outline-primary" href="{% url 'car:update_expenses' exp.id %}">Update</a></td>
+        <td><a class="btn btn-outline-primary" href="{% url 'car:expenses_delete' exp.id %}">Delete</a></td>
+    </tr>
+    {% endfor %}
+
+  </tbody>
+    <td>Total: {{ total }} BYN</td>
+    {% if flag %}
+    <td>
+        <button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#exampleModal">
+            Change
+        </button>
+    </td>
+</table>
+
+
+
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+
+        <h5 class="modal-title" id="exampleModalLabel">New Expenses</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+
+    {% load crispy_forms_tags %}
+    <form action="." method="POST" class="transparent modal_form">
+        {% csrf_token %}
+        <div class="form-inner">
+            <h3>New Expenses</h3>
+                {{ form_update.summa|as_crispy_field }}
+                {{ form_update.name|as_crispy_field }}
+                {{ form_update.notes|as_crispy_field }}
+                {{ form_update.date_money|as_crispy_field }}
+            <input type="submit" value="Create">
+        </div>
+    </form>
+
+    </div>
+  </div>
+</div>
+{% else %}
+    <td>
+        <button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#exampleModal">
+            Add New Expenses
+        </button>
+    </td>
+</table>
+
+
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+
+        <h5 class="modal-title" id="exampleModalLabel">New Expenses</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+
+    {% load crispy_forms_tags %}
+    <form action="." method="POST" class="transparent modal_form">
+        {% csrf_token %}
+        <div class="form-inner">
+            <h3>New Expenses</h3>
+                {{ form.summa|as_crispy_field }}
+                {{ form.name|as_crispy_field }}
+                {{ form.notes|as_crispy_field }}
+                {{ form.date_money|as_crispy_field }}
+            <input type="submit" value="Create">
+        </div>
+    </form>
+
+    </div>
+  </div>
+</div>
+{% endif %}
+{% endblock %}

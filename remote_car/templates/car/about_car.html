@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+
+{% block title %}About Car{% endblock %}
+
+
+
+{% block body %}
+<h2 class="my_title">About My Car</h2>
+<div id="resu">
+    <table  class="table table-info col_p">
+
+        <tr>
+            <th >Total Mileage</th>
+            <td >{{car.total_mileage}} Km.</td>
+        </tr>
+
+        <tr>
+            <th>Daily Mileage</th>
+            <td>{{car.daily_mileage}} Km.</td>
+        </tr>
+
+        <tr>
+            <th>Fuel</th>
+            <td>{{car.fuel}} L.</td>
+        </tr>
+
+        <tr>
+            <th>Tire pressure</th>
+            <td>{{car.tire_pressure}} Bar.</td>
+        </tr>
+
+        <tr>
+            <th>Fuel consumption</th>
+            <td>{{car.fuel_consumption}} Liters per hundred kilometers</td>
+        </tr>
+
+        <tr>
+            <th>Door status</th>
+            {% if door_sent %}
+            <td class="open_door">{{car.door_status}}</td>
+            {% else %}
+            <td class="close_door">{{car.door_status}}</td>
+            {% endif %}
+        </tr>
+
+        <tr>
+            <th>Battery voltage</th>
+            <td>{{car.battery_voltage}} В</td>
+        </tr>
+
+        <tr>
+            <th>Last date oil </th>
+            <td>{{date_oil}}</td>
+        </tr>
+
+        <tr>
+            <th>Last mileage oil </th>
+            <td>{{km_oil}} Km.</td>
+        </tr>
+
+        <tr>
+            <th>Last date insurance</th>
+            <td>{{date_insurance}}</td>
+        </tr>
+
+        <tr>
+            <th>Last date inspection</th>
+            <td>{{date_inspection}}</td>
+        </tr>
+    </table>
+</div>
+
+{% endblock %}

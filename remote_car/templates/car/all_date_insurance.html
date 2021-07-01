@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block title %}All Date Insurance{% endblock %}
+{% block body %}
+
+    <h2 class="my_title">All Date Insurance</h2>
+
+<table class="table table-info">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col"></th>
+      <th scope="col">Date Insurance</th>
+      <th scope="col"></th>
+      <th scope="col"></th>
+    </tr>
+  </thead>
+    {% for i in insurance %}
+      <tbody>
+        <tr>
+          <th scope="row"></th>
+          <td>{{ i }}</td>
+          <td><a class="btn btn-outline-primary" href="{% url 'car:update_date_insurance' i.id %}">Update</a></td>
+          <td><a class="btn btn-outline-primary" href="{% url 'car:delete_date_insurance' i.id %}">Delete</a></td>
+        </tr>
+      </tbody>
+    {% endfor %}
+</table>
+
+
+</table>
+
+
+{% endblock %}

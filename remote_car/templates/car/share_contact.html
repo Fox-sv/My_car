@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block title %}Contact Us{% endblock %}
+{% block body %}
+
+    {% load crispy_forms_tags %}
+
+    {% if sent %}
+        <div id="message">
+            <div id="inner-message" class="alert alert-success" role="alert">
+                Message send!
+            </div>
+        </div>
+
+
+    {% else %}
+    <form action="." method="POST" class="transparent">
+        {% csrf_token %}
+        <div class="form-inner">
+            <h3>Contacts</h3>
+                {{ form.name |as_crispy_field }}
+                {{ form.message|as_crispy_field }}
+
+        <input type="submit" value="Sent">
+        </div>
+    </form>
+
+    {% endif %}
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
